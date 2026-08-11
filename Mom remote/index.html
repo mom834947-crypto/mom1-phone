@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b5cab">
+  <title>کمک از راه دور — مامان</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- 0: Start -->
+    <section class="screen active" data-screen="start">
+      <p class="eyebrow">کمک از راه دور</p>
+      <h1>سلام مامان ❤️</h1>
+      <p class="lead" id="deviceNote">برای کمک به گوشی‌ات، فقط دکمه‌های بزرگ را بزن.</p>
+      <button type="button" class="btn primary" data-next="install">مامان، اینجا بزن</button>
+      <p class="tiny" id="compatWarn" hidden></p>
+    </section>
+
+    <!-- 1: Install QuickSupport -->
+    <section class="screen" data-screen="install">
+      <p class="step">مرحله ۱ از ۵</p>
+      <h1>نصب برنامه کمک</h1>
+      <p class="lead">الان برنامه رسمی <strong>TeamViewer QuickSupport</strong> را نصب کن.</p>
+      <a class="btn primary" id="playLink"
+         href="https://play.google.com/store/apps/details?id=com.teamviewer.quicksupport.market"
+         target="_blank" rel="noopener">نصب از گوگل‌پلی</a>
+      <button type="button" class="btn secondary" data-next="open">نصب شد — بعدی</button>
+      <details class="fallback">
+        <summary>اگر گوگل‌پلی باز نشد</summary>
+        <p>از سایت رسمی TeamViewer نصب کن:</p>
+        <a class="btn secondary"
+           href="https://www.teamviewer.com/en/download/mobile/"
+           target="_blank" rel="noopener">سایت رسمی TeamViewer</a>
+      </details>
+    </section>
+
+    <!-- 2: Open app -->
+    <section class="screen" data-screen="open">
+      <p class="step">مرحله ۲ از ۵</p>
+      <h1>برنامه را باز کن</h1>
+      <p class="lead">روی آیکون <strong>QuickSupport</strong> بزن.</p>
+      <a class="btn primary" id="launchLink"
+         href="intent://#Intent;package=com.teamviewer.quicksupport.market;scheme=package;end">
+        باز کردن QuickSupport
+      </a>
+      <button type="button" class="btn secondary" data-next="permissions">باز کردم — بعدی</button>
+    </section>
+
+    <!-- 3: Permissions -->
+    <section class="screen" data-screen="permissions">
+      <p class="step">مرحله ۳ از ۵</p>
+      <h1>اجازه‌ها را بده</h1>
+      <ol class="big-list">
+        <li>اگر پرسید <strong>نمایش صفحه</strong>، بزن <strong>شروع / Allow</strong>.</li>
+        <li>اگر گفت <strong>Add-on</strong> یا افزونه لازم است، بزن <strong>Download / نصب</strong>.</li>
+        <li>بعد در تنظیمات، <strong>Accessibility / دسترسی‌پذیری</strong> را برای TeamViewer روشن کن.</li>
+      </ol>
+      <p class="lead warn">بدون این اجازه‌ها، دخترت فقط ممکن است صفحه را ببیند و نتواند کمکت کند.</p>
+      <button type="button" class="btn primary" data-next="id">اجازه‌ها را دادم</button>
+      <button type="button" class="btn ghost" data-next="help-access">راهنمای Accessibility</button>
+    </section>
+
+    <!-- 3b: Accessibility help -->
+    <section class="screen" data-screen="help-access">
+      <p class="step">راهنما</p>
+      <h1>روشن کردن Accessibility</h1>
+      <ol class="big-list">
+        <li>برو به <strong>Settings / تنظیمات</strong></li>
+        <li>بزن <strong>Accessibility / دسترسی‌پذیری</strong></li>
+        <li>Installed apps / سرویس‌های نصب‌شده</li>
+        <li><strong>TeamViewer</strong> یا <strong>Universal Add-On</strong> را پیدا کن</li>
+        <li>کلید را <strong>روشن</strong> کن و Allow بزن</li>
+      </ol>
+      <p class="lead">مسیر منوی سامسونگ ممکن است کمی فرق کند.</p>
+      <button type="button" class="btn primary" data-next="permissions">برگشت</button>
+    </section>
+
+    <!-- 4: Tell ID -->
+    <section class="screen" data-screen="id">
+      <p class="step">مرحله ۴ از ۵</p>
+      <h1>کد را به من بگو</h1>
+      <p class="lead">در صفحه QuickSupport، عدد بزرگ با عنوان تقریباً:</p>
+      <p class="id-label">Your ID / شناسه شما</p>
+      <p class="lead">آن عدد را در تلفن یا پیام برایم بفرست.</p>
+      <div class="card tip">
+        <p>مثال شکل کد: <strong>123 456 789</strong></p>
+        <p>رمز ورود لازم نیست. فقط همین شناسه را بگو.</p>
+      </div>
+      <button type="button" class="btn primary" data-next="ready">کد را فرستادم</button>
+    </section>
+
+    <!-- 5: Ready / accept connection -->
+    <section class="screen" data-screen="ready">
+      <p class="step">مرحله ۵ از ۵</p>
+      <h1>من وصل می‌شوم</h1>
+      <p class="lead">وقتی درخواست اتصال آمد، بزن:</p>
+      <p class="id-label">Allow / اجازه / Accept</p>
+      <p class="lead">تا وقتی با هم کار می‌کنیم، گوشی را روشن و باز نگه دار.</p>
+      <a class="btn primary" href="intent://#Intent;package=com.teamviewer.quicksupport.market;scheme=package;end">
+        دوباره باز کردن QuickSupport
+      </a>
+      <button type="button" class="btn secondary" data-next="done">تمام</button>
+    </section>
+
+    <!-- Done -->
+    <section class="screen" data-screen="done">
+      <h1>آفرین مامان ❤️</h1>
+      <p class="lead">اگر قطع شد، دوباره QuickSupport را باز کن و کد Your ID را بفرست.</p>
+      <button type="button" class="btn primary" data-next="start">از اول</button>
+    </section>
+
+    <!-- Not Android -->
+    <section class="screen" data-screen="not-android">
+      <h1>این صفحه برای گوشی اندروید است</h1>
+      <p class="lead">لطفاً لینک را با گوشی سامسونگ مامان باز کنید.</p>
+      <button type="button" class="btn primary" data-next="install" data-forced="1">ادامه می‌دهم</button>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
